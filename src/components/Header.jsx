@@ -1,11 +1,11 @@
-export default function Header () {
+export default function Header() {
   return (
     <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Booroad</a>
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <div className="container-fluid">
+          <h1>header</h1>
         </div>
       </nav>
     </header>
-  )
+  );
 }
