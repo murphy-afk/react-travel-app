@@ -1,9 +1,13 @@
+import { NavLink } from "react-router-dom";
+
 export default function Header () {
   return (
     <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Booroad</a>
+      <nav className="navbar navbar-expand-lg bg-primary">
+        <div className="container-fluid">
+          <NavLink to={"/"}>
+            BooRoad
+          </NavLink>
         </div>
       </nav>
     </header>

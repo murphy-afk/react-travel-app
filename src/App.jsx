@@ -1,14 +1,17 @@
-import { BrowserRouter, Route, Router } from "react-router"
+import { BrowserRouter, Route, Router, Routes } from "react-router"
 import MainLayout from "./layouts/mainLayout"
+import Home from "./pages/Home"
 
 function App() {
-  <BrowserRouter>
-    <Router>
-      <Route element={<MainLayout/>}>
-        {/* <Route element={<Home/>} path="/"/> */}
-      </Route>
-    </Router>
-  </BrowserRouter>
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route element={<Home />} path="/" />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App
