@@ -1,14 +1,19 @@
-import { BrowserRouter, Route, Router } from "react-router"
-import MainLayout from "./layouts/mainLayout"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MainLayout from "./layouts/mainLayout";
+import Home from "./pages/Home.jsx";
+import Travel from "./pages/Travels.jsx";
 
 function App() {
-  <BrowserRouter>
-    <Router>
-      <Route element={<MainLayout/>}>
-        {/* <Route element={<Home/>} path="/"/> */}
-      </Route>
-    </Router>
-  </BrowserRouter>
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route element={<Home />} path="/" />
+          <Route element={<Travel />} path="/:id" />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
