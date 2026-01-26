@@ -1,13 +1,13 @@
-import { BrowserRouter, Route, Router } from "react-router"
+import { BrowserRouter, Route, Router } from "react-router-dom"
 import MainLayout from "./layouts/mainLayout"
 
 function App() {
   <BrowserRouter>
-    <Router>
+    <Routes>
       <Route element={<MainLayout/>}>
         {/* <Route element={<Home/>} path="/"/> */}
       </Route>
-    </Router>
+    </Routes>
   </BrowserRouter>
 }
 
