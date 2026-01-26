@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "./layouts/mainLayout";
 import Home from "./pages/Home.jsx";
-import Travel from "./pages/Travels.jsx";
-
+import Travel from "./pages/Travel.jsx";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 function App() {
   return (
     <BrowserRouter>
