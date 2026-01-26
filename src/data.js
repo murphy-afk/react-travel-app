@@ -22,7 +22,15 @@ const trips = [
         starting_date: "2026-08-20",
         ending_date: "2026-08-27",
         category: "soft"
-    }
+    },
+    {
+        id: 4,
+        starting_point: "Como",
+        ending_point: "Atene",
+        starting_date: "2027-08-20",
+        ending_date: "2027-08-27",
+        category: "wild"
+    },
 ];
 
 
