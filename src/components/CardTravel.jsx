@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-function CardTravel({ trip, showLink = true }) {
+function CardTravel({ trip, showLink }) {
   const { starting_point, ending_point, starting_date, ending_date, category } =
     trip;
 
