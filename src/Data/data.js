@@ -1,294 +1,281 @@
 const trips = [
-    {
-        id: 1,
-        starting_point: "Roma",
-        ending_point: "Barcellona",
-        starting_date: "2026-04-10",
-        ending_date: "2026-04-15",
-        category: "soft"
-    },
-    {
-        id: 2,
-        starting_point: "Milano",
-        ending_point: "Reykjavik",
-        starting_date: "2026-05-20",
-        ending_date: "2026-05-30",
-        category: "wild"
-    },
-    {
-        id: 3,
-        starting_point: "Torino",
-        ending_point: "Tokyo",
-        starting_date: "2026-06-05",
-        ending_date: "2026-06-20",
-        category: "wild"
-    },
-    {
-        id: 4,
-        starting_point: "Bologna",
-        ending_point: "Parigi",
-        starting_date: "2026-07-01",
-        ending_date: "2026-07-07",
-        category: "soft"
-    },
-    {
-        id: 5,
-        starting_point: "Napoli",
-        ending_point: "Marrakech",
-        starting_date: "2026-09-10",
-        ending_date: "2026-09-18",
-        category: "wild"
-    }
+  {
+    id: 1,
+    starting_point: "Roma",
+    ending_point: "Barcellona",
+    starting_date: "2026-04-10",
+    ending_date: "2026-04-15",
+    category: "soft",
+  },
+  {
+    id: 2,
+    starting_point: "Milano",
+    ending_point: "Reykjavik",
+    starting_date: "2026-05-20",
+    ending_date: "2026-05-30",
+    category: "wild",
+  },
+  {
+    id: 3,
+    starting_point: "Torino",
+    ending_point: "Tokyo",
+    starting_date: "2026-06-05",
+    ending_date: "2026-06-20",
+    category: "wild",
+  },
+  {
+    id: 4,
+    starting_point: "Bologna",
+    ending_point: "Parigi",
+    starting_date: "2026-07-01",
+    ending_date: "2026-07-07",
+    category: "soft",
+  },
+  {
+    id: 5,
+    starting_point: "Napoli",
+    ending_point: "Marrakech",
+    starting_date: "2026-09-10",
+    ending_date: "2026-09-18",
+    category: "wild",
+  },
 ];
-
 
 const travelers = [
-    // Trip 1
-    {
-        id: 1,
-        name: "Marco",
-        surname: "Rossi",
-        email: "marco.rossi@email.com",
-        telephone_number: "+393331111111",
-        identification_code: "RSSMRC90A01H501X",
-        trip_id: 1
-    },
-    {
-        id: 2,
-        name: "Giulia",
-        surname: "Bianchi",
-        email: "giulia.bianchi@email.com",
-        telephone_number: "+393332222222",
-        identification_code: "BNCGLI92B12F205Y",
-        trip_id: 1
-    },
-    {
-        id: 3,
-        name: "Luca",
-        surname: "Verdi",
-        email: "luca.verdi@email.com",
-        telephone_number: "+393333333333",
-        identification_code: "VRDLCU88C15G273K",
-        trip_id: 1
-    },
-    {
-        id: 4,
-        name: "Sara",
-        surname: "Neri",
-        email: "sara.neri@email.com",
-        telephone_number: "+393334444444",
-        identification_code: "NRISRA95D45H501Q",
-        trip_id: 1
-    },
-    {
-        id: 5,
-        name: "Andrea",
-        surname: "Gallo",
-        email: "andrea.gallo@email.com",
-        telephone_number: "+393335555555",
-        identification_code: "GLLNDR91E22F839Z",
-        trip_id: 1
-    },
+  // Trip 1
+  {
+    id: 1,
+    name: "Marco",
+    surname: "Rossi",
+    email: "marco.rossi@email.com",
+    telephone_number: "+393331111111",
+    identification_code: "RSSMRC90A01H501X",
+    trip_id: 1,
+  },
+  {
+    id: 2,
+    name: "Giulia",
+    surname: "Bianchi",
+    email: "giulia.bianchi@email.com",
+    telephone_number: "+393332222222",
+    identification_code: "BNCGLI92B12F205Y",
+    trip_id: 1,
+  },
+  {
+    id: 3,
+    name: "Luca",
+    surname: "Verdi",
+    email: "luca.verdi@email.com",
+    telephone_number: "+393333333333",
+    identification_code: "VRDLCU88C15G273K",
+    trip_id: 1,
+  },
+  {
+    id: 4,
+    name: "Sara",
+    surname: "Neri",
+    email: "sara.neri@email.com",
+    telephone_number: "+393334444444",
+    identification_code: "NRISRA95D45H501Q",
+    trip_id: 1,
+  },
+  {
+    id: 5,
+    name: "Andrea",
+    surname: "Gallo",
+    email: "andrea.gallo@email.com",
+    telephone_number: "+393335555555",
+    identification_code: "GLLNDR91E22F839Z",
+    trip_id: 1,
+  },
 
+  // Trip 2
+  {
+    id: 6,
+    name: "Elena",
+    surname: "Ferrari",
+    email: "elena.ferrari@email.com",
+    telephone_number: "+393336666666",
+    identification_code: "FRRLNE89A10L219P",
+    trip_id: 2,
+  },
+  {
+    id: 7,
+    name: "Davide",
+    surname: "Conti",
+    email: "davide.conti@email.com",
+    telephone_number: "+393337777777",
+    identification_code: "CNTDVD87B20F205W",
+    trip_id: 2,
+  },
+  {
+    id: 8,
+    name: "Chiara",
+    surname: "Romano",
+    email: "chiara.romano@email.com",
+    telephone_number: "+393338888888",
+    identification_code: "RMNCHR93C18H501A",
+    trip_id: 2,
+  },
+  {
+    id: 9,
+    name: "Matteo",
+    surname: "Costa",
+    email: "matteo.costa@email.com",
+    telephone_number: "+393339999999",
+    identification_code: "CSTMTH90D25F205M",
+    trip_id: 2,
+  },
+  {
+    id: 10,
+    name: "Laura",
+    surname: "Moretti",
+    email: "laura.moretti@email.com",
+    telephone_number: "+393331010101",
+    identification_code: "MRTLRU96E44H501T",
+    trip_id: 2,
+  },
 
+  // Trip 3
+  {
+    id: 11,
+    name: "Paolo",
+    surname: "Ricci",
+    email: "paolo.ricci@email.com",
+    telephone_number: "+393332020202",
+    identification_code: "RCCPLA85F10F205U",
+    trip_id: 3,
+  },
+  {
+    id: 12,
+    name: "Federica",
+    surname: "Marini",
+    email: "federica.marini@email.com",
+    telephone_number: "+393333030303",
+    identification_code: "MRNFRC91G55H501R",
+    trip_id: 3,
+  },
+  {
+    id: 13,
+    name: "Simone",
+    surname: "De Luca",
+    email: "simone.deluca@email.com",
+    telephone_number: "+393334040404",
+    identification_code: "DLCSMN88H12F205S",
+    trip_id: 3,
+  },
+  {
+    id: 14,
+    name: "Valentina",
+    surname: "Serra",
+    email: "valentina.serra@email.com",
+    telephone_number: "+393335050505",
+    identification_code: "SRRVLN94I41H501L",
+    trip_id: 3,
+  },
+  {
+    id: 15,
+    name: "Giorgio",
+    surname: "Pellegrini",
+    email: "giorgio.p@email.com",
+    telephone_number: "+393336060606",
+    identification_code: "PLLGGR86L18F205E",
+    trip_id: 3,
+  },
 
+  // Trip 4
+  {
+    id: 16,
+    name: "Alessia",
+    surname: "Colombo",
+    email: "alessia.colombo@email.com",
+    telephone_number: "+393337070707",
+    identification_code: "CLMLSS97A01H501C",
+    trip_id: 4,
+  },
+  {
+    id: 17,
+    name: "Nicola",
+    surname: "Riva",
+    email: "nicola.riva@email.com",
+    telephone_number: "+393338080808",
+    identification_code: "RVANCL90B22F205B",
+    trip_id: 4,
+  },
+  {
+    id: 18,
+    name: "Irene",
+    surname: "Villa",
+    email: "irene.villa@email.com",
+    telephone_number: "+393339090909",
+    identification_code: "VLLIRN95C44H501D",
+    trip_id: 4,
+  },
+  {
+    id: 19,
+    name: "Stefano",
+    surname: "Greco",
+    email: "stefano.greco@email.com",
+    telephone_number: "+393331111222",
+    identification_code: "GRCSTF89D10F205F",
+    trip_id: 4,
+  },
+  {
+    id: 20,
+    name: "Marta",
+    surname: "Piras",
+    email: "marta.piras@email.com",
+    telephone_number: "+393332222333",
+    identification_code: "PRSMRT93E55H501G",
+    trip_id: 4,
+  },
 
-    // Trip 2
-    {
-        id: 6,
-        name: "Elena",
-        surname: "Ferrari",
-        email: "elena.ferrari@email.com",
-        telephone_number: "+393336666666",
-        identification_code: "FRRLNE89A10L219P",
-        trip_id: 2
-    },
-    {
-        id: 7,
-        name: "Davide",
-        surname: "Conti",
-        email: "davide.conti@email.com",
-        telephone_number: "+393337777777",
-        identification_code: "CNTDVD87B20F205W",
-        trip_id: 2
-    },
-    {
-        id: 8,
-        name: "Chiara",
-        surname: "Romano",
-        email: "chiara.romano@email.com",
-        telephone_number: "+393338888888",
-        identification_code: "RMNCHR93C18H501A",
-        trip_id: 2
-    },
-    {
-        id: 9,
-        name: "Matteo",
-        surname: "Costa",
-        email: "matteo.costa@email.com",
-        telephone_number: "+393339999999",
-        identification_code: "CSTMTH90D25F205M",
-        trip_id: 2
-    },
-    {
-        id: 10,
-        name: "Laura",
-        surname: "Moretti",
-        email: "laura.moretti@email.com",
-        telephone_number: "+393331010101",
-        identification_code: "MRTLRU96E44H501T",
-        trip_id: 2
-    },
-
-
-
-
-    // Trip 3
-    {
-        id: 11,
-        name: "Paolo",
-        surname: "Ricci",
-        email: "paolo.ricci@email.com",
-        telephone_number: "+393332020202",
-        identification_code: "RCCPLA85F10F205U",
-        trip_id: 3
-    },
-    {
-        id: 12,
-        name: "Federica",
-        surname: "Marini",
-        email: "federica.marini@email.com",
-        telephone_number: "+393333030303",
-        identification_code: "MRNFRC91G55H501R",
-        trip_id: 3
-    },
-    {
-        id: 13,
-        name: "Simone",
-        surname: "De Luca",
-        email: "simone.deluca@email.com",
-        telephone_number: "+393334040404",
-        identification_code: "DLCSMN88H12F205S",
-        trip_id: 3
-    },
-    {
-        id: 14,
-        name: "Valentina",
-        surname: "Serra",
-        email: "valentina.serra@email.com",
-        telephone_number: "+393335050505",
-        identification_code: "SRRVLN94I41H501L",
-        trip_id: 3
-    },
-    {
-        id: 15,
-        name: "Giorgio",
-        surname: "Pellegrini",
-        email: "giorgio.p@email.com",
-        telephone_number: "+393336060606",
-        identification_code: "PLLGGR86L18F205E",
-        trip_id: 3
-    },
-
-
-
-
-    // Trip 4
-    {
-        id: 16,
-        name: "Alessia",
-        surname: "Colombo",
-        email: "alessia.colombo@email.com",
-        telephone_number: "+393337070707",
-        identification_code: "CLMLSS97A01H501C",
-        trip_id: 4
-    },
-    {
-        id: 17,
-        name: "Nicola",
-        surname: "Riva",
-        email: "nicola.riva@email.com",
-        telephone_number: "+393338080808",
-        identification_code: "RVANCL90B22F205B",
-        trip_id: 4
-    },
-    {
-        id: 18,
-        name: "Irene",
-        surname: "Villa",
-        email: "irene.villa@email.com",
-        telephone_number: "+393339090909",
-        identification_code: "VLLIRN95C44H501D",
-        trip_id: 4
-    },
-    {
-        id: 19,
-        name: "Stefano",
-        surname: "Greco",
-        email: "stefano.greco@email.com",
-        telephone_number: "+393331111222",
-        identification_code: "GRCSTF89D10F205F",
-        trip_id: 4
-    },
-    {
-        id: 20,
-        name: "Marta",
-        surname: "Piras",
-        email: "marta.piras@email.com",
-        telephone_number: "+393332222333",
-        identification_code: "PRSMRT93E55H501G",
-        trip_id: 4
-    },
-
-
-    
-    // Trip 5
-    {
-        id: 21,
-        name: "Antonio",
-        surname: "Esposito",
-        email: "antonio.esposito@email.com",
-        telephone_number: "+393333444555",
-        identification_code: "SPSNTN85F01F839H",
-        trip_id: 5
-    },
-    {
-        id: 22,
-        name: "Francesca",
-        surname: "Russo",
-        email: "francesca.russo@email.com",
-        telephone_number: "+393334555666",
-        identification_code: "RSSFNC92G12H501J",
-        trip_id: 5
-    },
-    {
-        id: 23,
-        name: "Ciro",
-        surname: "De Santis",
-        email: "ciro.desantis@email.com",
-        telephone_number: "+393335666777",
-        identification_code: "DSNCRI88H20F839K",
-        trip_id: 5
-    },
-    {
-        id: 24,
-        name: "Roberta",
-        surname: "Amato",
-        email: "roberta.amato@email.com",
-        telephone_number: "+393336777888",
-        identification_code: "MTRRBT94I41H501L",
-        trip_id: 5
-    },
-    {
-        id: 25,
-        name: "Salvatore",
-        surname: "Vitale",
-        email: "salvatore.vitale@email.com",
-        telephone_number: "+393337888999",
-        identification_code: "VTLSVT90L18F839M",
-        trip_id: 5
-    }
+  // Trip 5
+  {
+    id: 21,
+    name: "Antonio",
+    surname: "Esposito",
+    email: "antonio.esposito@email.com",
+    telephone_number: "+393333444555",
+    identification_code: "SPSNTN85F01F839H",
+    trip_id: 5,
+  },
+  {
+    id: 22,
+    name: "Francesca",
+    surname: "Russo",
+    email: "francesca.russo@email.com",
+    telephone_number: "+393334555666",
+    identification_code: "RSSFNC92G12H501J",
+    trip_id: 5,
+  },
+  {
+    id: 23,
+    name: "Ciro",
+    surname: "De Santis",
+    email: "ciro.desantis@email.com",
+    telephone_number: "+393335666777",
+    identification_code: "DSNCRI88H20F839K",
+    trip_id: 5,
+  },
+  {
+    id: 24,
+    name: "Roberta",
+    surname: "Amato",
+    email: "roberta.amato@email.com",
+    telephone_number: "+393336777888",
+    identification_code: "MTRRBT94I41H501L",
+    trip_id: 5,
+  },
+  {
+    id: 25,
+    name: "Salvatore",
+    surname: "Vitale",
+    email: "salvatore.vitale@email.com",
+    telephone_number: "+393337888999",
+    identification_code: "VTLSVT90L18F839M",
+    trip_id: 5,
+  },
 ];
 
-
-export default {travelers, trips}
+export { travelers, trips };

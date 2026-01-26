@@ -1,3 +1,5 @@
+import { travelers, trips } from "../Data/data.js";
+
 export default function Home() {
-  return <h1>Home</h1>;
+  return <div className="container pt-5">ciao</div>;
 }
