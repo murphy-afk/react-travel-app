@@ -5,8 +5,11 @@ export default function Header() {
     <header>
       <nav className="navbar navbar-expand-lg bg-primary">
         <div className="container-fluid">
-          <Link className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             BooRoad
+          </Link>
+          <Link className="navbar-brand" to="/addtrips">
+            Add Trips
           </Link>
         </div>
       </nav>
