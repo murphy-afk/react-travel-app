@@ -118,7 +118,7 @@ export default function AddTrips({ onAddTrip, trips }) {
               <i className="bi bi-check-circle-fill fs-4 me-3"></i>
               <div>
                 <strong className="d-block">Viaggio salvato!</strong>
-                <span>Ti stiamo riportando alla Home...</span>
+                <span>Ti stiamo riportando in Esplorazione...</span>
               </div>
             </div>
           )}
