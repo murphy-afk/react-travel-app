@@ -1,13 +1,13 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export default function Header () {
+export default function Header() {
   return (
     <header>
       <nav className="navbar navbar-expand-lg bg-primary">
         <div className="container-fluid">
-          <NavLink to={"/"}>
+          <Link className="navbar-brand" href="#">
             BooRoad
-          </NavLink>
+          </Link>
         </div>
       </nav>
     </header>
