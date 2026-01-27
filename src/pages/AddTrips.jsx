@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 
 export default function AddTrips({ onAddTrip }) {
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
   const [form, setForm] = useState({
     starting_point: "",
@@ -14,11 +15,30 @@ export default function AddTrips({ onAddTrip }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newTrip = { ...form, id: Date.now() };
 
+    if (
+      !isNaN(form.starting_point) ||
+      !isNaN(
+        form.ending_point || form.starting_point === "" || form.ending_point,
+      )
+    ) {
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+      setForm({
+        starting_point: "",
+        ending_point: "",
+        starting_date: "",
+        ending_date: "",
+        category: "",
+      });
+      return;
+    }
+
+    const newTrip = { ...form, id: Date.now() };
     onAddTrip(newTrip);
     setSuccess(true);
-
     setTimeout(() => {
       setSuccess(false);
       navigate("/");
@@ -49,6 +69,34 @@ export default function AddTrips({ onAddTrip }) {
             <p className="text-muted">
               Inserisci i dettagli per iniziare il tuo prossimo viaggio.
             </p>
+            {error && (
+              <div
+                className="alert border-0 shadow-lg rounded-4 mb-4 d-flex justify-content-center align-items-center animate__animated animate__headShake"
+                style={{
+                  background: "rgba(254, 242, 242, 0.8)",
+                  backdropFilter: "blur(4px)",
+                  color: "#dc2626",
+                  padding: "1.5rem",
+                }}
+              >
+                <div className="text-center">
+                  <div className="mb-2">
+                    <i className="bi bi-exclamation-circle-fill fs-2"></i>
+                  </div>
+
+                  <h5
+                    className="fw-black text-uppercase tracking-widest mb-1"
+                    style={{ fontSize: "1rem" }}
+                  >
+                    Dati non validi
+                  </h5>
+
+                  <p className="mb-0 opacity-75 fw-medium">
+                    Assicurati che tutti i campi siano compilati correttamente.
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
 
           {success && (
@@ -80,7 +128,6 @@ export default function AddTrips({ onAddTrip }) {
                       placeholder="Da dove parti?"
                       value={form.starting_point}
                       onChange={handleChange}
-                      required
                     />
                   </div>
                   <div className="col-md-6">
@@ -95,7 +142,6 @@ export default function AddTrips({ onAddTrip }) {
                       placeholder="Dove vuoi andare?"
                       value={form.ending_point}
                       onChange={handleChange}
-                      required
                     />
                   </div>
                 </div>
@@ -176,10 +222,11 @@ export default function AddTrips({ onAddTrip }) {
 
           <div className="text-center mt-4">
             <button
-              className="btn btn-link text-muted text-decoration-none small"
+              className="btn btn-light w-50 rounded-pill px-4 py-2 fw-bold text-muted border shadow-sm"
+              style={{ fontSize: "0.9rem" }}
               onClick={() => navigate("/")}
             >
-              Annulla e torna indietro
+              Indietro
             </button>
           </div>
         </div>
