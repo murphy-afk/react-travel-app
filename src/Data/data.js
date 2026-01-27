@@ -1,4 +1,4 @@
-const trips = [
+const internalTrips = [
   {
     id: 1,
     starting_point: "Roma",
@@ -41,7 +41,7 @@ const trips = [
   },
 ];
 
-const travelers = [
+const internalTravelers = [
   // Trip 1
   {
     id: 1,
@@ -278,4 +278,4 @@ const travelers = [
   },
 ];
 
-export { travelers, trips };
+export { internalTrips, internalTravelers };

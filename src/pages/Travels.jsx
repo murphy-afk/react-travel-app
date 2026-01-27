@@ -1,11 +1,10 @@
-import { travelers, trips } from "../Data/data.js";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CardTravel from "../components/CardTravel.jsx";
 import { useNavigate } from "react-router-dom";
 import TravellersAccordion from "../components/TravellersAccordion.jsx";
 
-function Travels() {
+function Travels({ trips, travelers }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
