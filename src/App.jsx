@@ -1,12 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "./layouts/mainLayout";
-import Home from "./pages/Home.jsx";
+import Trip from "./pages/Trips.jsx";
 import Travels from "./pages/Travels.jsx";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import NotFound from "./pages/Notfound.jsx";
 import { internalTrips, internalTravelers } from "./Data/data.js";
 import AddTrips from "./pages/AddTrips.jsx";
 import { useState } from "react";
+import Home from "./pages/Home.jsx";
 
 function App() {
   const [trips, setTrips] = useState(internalTrips);
@@ -20,7 +21,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
-          <Route element={<Home trips={trips} />} path="/" />
+          <Route path="/" element={<Home />} />
+          <Route path="/trips" element={<Trip trips={trips} />} />
           <Route
             element={
               <Travels
@@ -31,7 +33,10 @@ function App() {
             }
             path="/travels/:id"
           />
-          <Route path="/addtrips" element={<AddTrips onAddTrip={addTrip} />} />
+          <Route
+            path="/addtrips"
+            element={<AddTrips onAddTrip={addTrip} trips={trips} />}
+          />
         </Route>
 
         <Route path="*" element={<NotFound />} />

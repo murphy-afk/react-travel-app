@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-export default function AddTrips({ onAddTrip }) {
-  const [success, SetSuccess] = useState(false);
+export default function AddTrips({ onAddTrip, trips }) {
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
   const [form, setForm] = useState({
     starting_point: "",
@@ -15,14 +16,45 @@ export default function AddTrips({ onAddTrip }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newTrip = { ...form, id: Date.now() };
+    const maxId = trips.length > 0 ? Math.max(...trips.map((t) => t.id)) : 0;
+    const newId = maxId + 1;
 
+    if (
+      !isNaN(form.starting_point) ||
+      !isNaN(
+        form.ending_point || form.starting_point === "" || form.ending_point,
+      )
+    ) {
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+      setForm({
+        starting_point: "",
+        ending_point: "",
+        starting_date: "",
+        ending_date: "",
+        category: "",
+      });
+      return;
+    }
+
+    const newTrip = {
+      ...form,
+      id: newId,
+      starting_point:
+        form.starting_point.charAt(0).toUpperCase() +
+        form.starting_point.slice(1),
+      ending_point:
+        form.ending_point.charAt(0).toUpperCase() + form.ending_point.slice(1),
+    };
     onAddTrip(newTrip);
-    SetSuccess(true);
+    setSuccess(true);
     setTimeout(() => {
-      SetSuccess(false);
-      navigate("/");
+      setSuccess(false);
+      navigate("/trips");
     }, 3000);
+
     setForm({
       starting_point: "",
       ending_point: "",
@@ -37,106 +69,179 @@ export default function AddTrips({ onAddTrip }) {
   };
 
   return (
-    <div className="container mt-5">
-      {success === false ? (
-        <h2 className="mb-4">Aggiungi nuovo Viaggio</h2>
-      ) : (
-        <div className="alert alert-success shadow-sm" role="alert">
-          <h1 className="alert-heading h4">✨ Viaggio Creato con Successo!</h1>
-          <p className="mb-0">
-            Il tuo nuovo itinerario è ora disponibile nella Home.
-          </p>
-        </div>
-      )}
+    <div className="container py-5">
+      <div className="row justify-content-center">
+        <div className="col-lg-8 col-xl-7">
+          <div className="text-center mb-5">
+            <div className="display-4 text-primary mb-2">
+              <i className="bi bi-airplane-engines-fill"></i>
+            </div>
+            <h2 className="fw-bold">Pianifica Nuova Avventura</h2>
+            <p className="text-muted">
+              Inserisci i dettagli per iniziare il tuo prossimo viaggio.
+            </p>
+            {error && (
+              <div
+                className="alert border-0 shadow-lg rounded-4 mb-4 d-flex justify-content-center align-items-center animate__animated animate__headShake"
+                style={{
+                  background: "rgba(254, 242, 242, 0.8)",
+                  backdropFilter: "blur(4px)",
+                  color: "#dc2626",
+                  padding: "1.5rem",
+                }}
+              >
+                <div className="text-center">
+                  <div className="mb-2">
+                    <i className="bi bi-exclamation-circle-fill fs-2"></i>
+                  </div>
 
-      <form onSubmit={handleSubmit} className="shadow p-4 rounded bg-light">
-        <div className="mb-3">
-          <label htmlFor="partenza" className="form-label">
-            Partenza
-          </label>
-          <input
-            id="partenza"
-            type="text"
-            name="starting_point"
-            className="form-control"
-            placeholder="Es: Milano"
-            value={form.starting_point}
-            onChange={handleChange}
-            required
-          />
-        </div>
+                  <h5
+                    className="fw-black text-uppercase tracking-widest mb-1"
+                    style={{ fontSize: "1rem" }}
+                  >
+                    Dati non validi
+                  </h5>
 
-        <div className="mb-3">
-          <label htmlFor="destinazione" className="form-label">
-            Destinazione
-          </label>
-          <input
-            id="destinazione"
-            type="text"
-            name="ending_point"
-            className="form-control"
-            placeholder="Es: Parigi"
-            value={form.ending_point}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="row">
-          <div className="col-md-6 mb-3">
-            <label htmlFor="data-inizio" className="form-label">
-              Data Inizio
-            </label>
-            <input
-              id="data-inizio"
-              type="date"
-              name="starting_date"
-              className="form-control"
-              value={form.starting_date}
-              onChange={handleChange}
-              required
-            />
+                  <p className="mb-0 opacity-75 fw-medium">
+                    Assicurati che tutti i campi siano compilati correttamente.
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
 
-          <div className="col-md-6 mb-3">
-            <label htmlFor="data-fine" className="form-label">
-              Data Fine
-            </label>
-            <input
-              id="data-fine"
-              type="date"
-              name="ending_date"
-              className="form-control"
-              value={form.ending_date}
-              onChange={handleChange}
-              required
-            />
+          {success && (
+            <div
+              className="alert alert-success border-0 shadow-sm rounded-4 mb-4 d-flex align-items-center animate__animated animate__fadeIn"
+              role="alert"
+            >
+              <i className="bi bi-check-circle-fill fs-4 me-3"></i>
+              <div>
+                <strong className="d-block">Viaggio salvato!</strong>
+                <span>Ti stiamo riportando alla Home...</span>
+              </div>
+            </div>
+          )}
+
+          <div className="card border-0 shadow-lg rounded-4 overflow-hidden">
+            <div className="card-body p-4 p-md-5">
+              <form onSubmit={handleSubmit}>
+                <div className="row g-4 mb-4">
+                  <div className="col-md-6">
+                    <label className="form-label fw-semibold">
+                      <i className="bi bi-geo-alt text-primary me-2"></i>Punto
+                      di Partenza
+                    </label>
+                    <input
+                      name="starting_point"
+                      type="text"
+                      className="form-control form-control-lg rounded-3 bg-light border-0"
+                      placeholder="Da dove parti?"
+                      value={form.starting_point}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="form-label fw-semibold">
+                      <i className="bi bi-geo-fill text-danger me-2"></i>
+                      Destinazione
+                    </label>
+                    <input
+                      name="ending_point"
+                      type="text"
+                      className="form-control form-control-lg rounded-3 bg-light border-0"
+                      placeholder="Dove vuoi andare?"
+                      value={form.ending_point}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+
+                <div className="row g-4 mb-4">
+                  <div className="col-md-6">
+                    <label className="form-label fw-semibold">
+                      <i className="bi bi-calendar-event text-secondary me-2"></i>
+                      Inizio Viaggio
+                    </label>
+                    <input
+                      name="starting_date"
+                      type="date"
+                      className="form-control form-control-lg rounded-3 bg-light border-0"
+                      value={form.starting_date}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="form-label fw-semibold">
+                      <i className="bi bi-calendar-check text-secondary me-2"></i>
+                      Fine Viaggio
+                    </label>
+                    <input
+                      name="ending_date"
+                      type="date"
+                      className="form-control form-control-lg rounded-3 bg-light border-0"
+                      value={form.ending_date}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="mb-5">
+                  <label className="form-label fw-semibold">
+                    <i className="bi bi-tags text-secondary me-2"></i>Stile di
+                    Viaggio
+                  </label>
+                  <div className="d-flex gap-3 mt-1">
+                    {["soft", "wild"].map((cat) => (
+                      <div key={cat} className="flex-grow-1">
+                        <input
+                          type="radio"
+                          className="btn-check"
+                          name="category"
+                          id={cat}
+                          value={cat}
+                          checked={form.category === cat}
+                          onChange={handleChange}
+                          required
+                        />
+                        <label
+                          className={`btn btn-outline-${cat === "wild" ? "danger" : "success"} w-100 py-3 rounded-3 text-capitalize fw-bold`}
+                          htmlFor={cat}
+                        >
+                          <i
+                            className={`bi bi-${cat === "wild" ? "fire" : "tree"} me-2`}
+                          ></i>
+                          {cat}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-lg w-100 rounded-pill py-3 fw-bold shadow"
+                >
+                  <i className="bi bi-cloud-arrow-up-fill me-2"></i>Crea
+                  Itinerario
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div className="text-center mt-4">
+            <button
+              className="btn btn-light w-50 rounded-pill px-4 py-2 fw-bold text-muted border shadow-sm"
+              style={{ fontSize: "0.9rem" }}
+              onClick={() => navigate("/")}
+            >
+              Indietro
+            </button>
           </div>
         </div>
-
-        <div className="mb-4">
-          <label htmlFor="tipologia-viaggio" className="form-label">
-            Tipologia Viaggio
-          </label>
-          <select
-            id="tipologia-viaggio"
-            name="category"
-            className="form-select"
-            value={form.category}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Seleziona categoria</option>
-            <option value="soft">Soft</option>
-            <option value="wild">Wild</option>
-          </select>
-        </div>
-        <div className="text-center">
-          <button type="submit" className="btn btn-primary w-50">
-            Salva Viaggio
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 }
