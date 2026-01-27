@@ -42,10 +42,11 @@ function CardTravel({ trip, showLink }) {
           >
             {ending_point}
           </h2>
-          <div className="d-flex align-items-center text-secondary small">
-            <i className="bi bi-calendar3-range me-2 text-primary"></i>
-            <span className="fw-medium">
-              {starting_date} — {ending_date}
+          <div className="d-flex align-items-center text-secondary small py-1">
+            <span className="fw-medium mt-2">
+              Data Partenza: {starting_date}
+              <br />
+              Data Ritorno: {ending_date}
             </span>
           </div>
         </div>
