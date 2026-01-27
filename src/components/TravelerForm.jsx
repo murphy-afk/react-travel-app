@@ -35,9 +35,9 @@ let lastId = travelers[travelers.length - 1].id;
     }
 
     setTravelers([...travelers, newTraveler]);
-    console.log(travelers);
     
     setFormData(initialFormData);
+    console.log(travelers);
   }
 
 
@@ -54,6 +54,7 @@ let lastId = travelers[travelers.length - 1].id;
         className="form-control"
         value={formData.name}
         onChange={handleChange}
+        required
         />
 
         <label htmlFor="surname" className="form-label">Surname</label>
@@ -64,6 +65,7 @@ let lastId = travelers[travelers.length - 1].id;
         className="form-control"
         value={formData.surname}
         onChange={handleChange}
+        required
         />
 
         <label htmlFor="email" className="form-label">Email</label>
@@ -74,6 +76,7 @@ let lastId = travelers[travelers.length - 1].id;
         className="form-control"
         value={formData.email}
         onChange={handleChange}
+        required
         />
 
         <label htmlFor="identification_code" className="form-label">Identification code (CF)</label>
@@ -84,17 +87,20 @@ let lastId = travelers[travelers.length - 1].id;
         className="form-control"
         value={formData.identification_code}
         onChange={handleChange}
+        required
         />
 
         <label htmlFor="telephone_number" className="form-label">Telephone number</label>
         <input
         type="tel"
         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        placeholder="000-000-0000"
         name="telephone_number"
         id="telephone_number"
         className="form-control"
         value={formData.telephone_number}
         onChange={handleChange}
+        required
         />
 
         <div className="d-flex justify-content-center align-items-center">

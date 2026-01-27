@@ -8,9 +8,6 @@ import TravelerForm from "../components/TravelerForm.jsx";
 function Travels({ trips, travelers, setTravelers }) {
   const { id } = useParams();
   const navigate = useNavigate();
-  /*
-  1. Aggiungiamo il form
-  */
 
   const trip = trips.find((trip) => trip.id === parseInt(id));
   
@@ -51,17 +48,21 @@ function Travels({ trips, travelers, setTravelers }) {
         onChange={(event) => setSearchbarValue(event.target.value)}
         />
         <TravellersAccordion travelers={filteredUsers} />
+
+        <h2 className="border rounded py-2 fw-bold text-center my-3 mt-5">
+          Add new user
+        </h2>
+
         <TravelerForm id={id} travelers={travelers} setTravelers={setTravelers}/>
-        {/* Posizione nuovo utente */}
 
         <div className="text-center">
           <button
-            className="btn btn-warning mt-4 "
+            className="btn btn-warning mt-5 mb-4"
             onClick={() => {
               navigate(-1);
             }}
           >
-            Go back to the Trips area
+            Go back to the trips area
           </button>
         </div>
       </div>
