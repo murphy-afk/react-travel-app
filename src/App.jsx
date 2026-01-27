@@ -10,15 +10,10 @@ import { useState } from "react";
 
 function App() {
   const [trips, setTrips] = useState(internalTrips);
-  const [travelers, settravelers] = useState(internalTravelers);
+  const [travelers, setTravelers] = useState(internalTravelers);
 
   const addTrip = (newTrip) => {
-    setTrips((trip) => [
-      ...trip,
-      {
-        ...newTrip,
-      },
-    ]);
+    setTrips((trip) => [newTrip, ...trip]);
   };
 
   return (
@@ -27,7 +22,13 @@ function App() {
         <Route element={<MainLayout />}>
           <Route element={<Home trips={trips} />} path="/" />
           <Route
-            element={<Travels trips={trips} travelers={travelers} />}
+            element={
+              <Travels
+                trips={trips}
+                travelers={travelers}
+                setTravelers={setTravelers}
+              />
+            }
             path="/travels/:id"
           />
           <Route path="/addtrips" element={<AddTrips onAddTrip={addTrip} />} />
