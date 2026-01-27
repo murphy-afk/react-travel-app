@@ -16,8 +16,7 @@ function Home() {
                 "linear-gradient(to right, #6366f1, #a855f7, #ec4899)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              fontSize:
-                "clamp(3rem, 10vw, 8rem)",
+              fontSize: "clamp(3rem, 10vw, 8rem)",
               lineHeight: "1",
             }}
           >
@@ -27,22 +26,16 @@ function Home() {
             Viaggia con noi
           </p>
           <div className="d-flex justify-content-center align-items-center">
-
-          <Link
-            className="nav-link fw-bold text-light opacity-75 hover-opacity-100 transition-all border rounded w-75"
-            style={{ letterSpacing: "1px", fontSize: "0.85rem" }}
-            to="/trips"
-          >
-            ESPLORA I NOSTRI VIAGGI
-          </Link>
+            <Link
+              className="nav-link fw-bold text-light opacity-75 hover-opacity-100 transition-all border rounded w-75 p-2"
+              style={{ letterSpacing: "1px", fontSize: "0.85rem" }}
+              to="/trips"
+            >
+              ESPLORA I NOSTRI VIAGGI
+            </Link>
           </div>
         </div>
       </div>
-      {/*  <div className="home-background d-flex justify-content-center align-items-center">
-     
-          <h1 className="fw-bold">BOO ROAD</h1>
-      
-    </div> */}
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-export default function AddTrips({ onAddTrip }) {
+export default function AddTrips({ onAddTrip, trips }) {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
@@ -15,6 +15,9 @@ export default function AddTrips({ onAddTrip }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const maxId = trips.length > 0 ? Math.max(...trips.map((t) => t.id)) : 0;
+    const newId = maxId + 1;
 
     if (
       !isNaN(form.starting_point) ||
@@ -36,12 +39,20 @@ export default function AddTrips({ onAddTrip }) {
       return;
     }
 
-    const newTrip = { ...form, id: Date.now() };
+    const newTrip = {
+      ...form,
+      id: newId,
+      starting_point:
+        form.starting_point.charAt(0).toUpperCase() +
+        form.starting_point.slice(1),
+      ending_point:
+        form.ending_point.charAt(0).toUpperCase() + form.ending_point.slice(1),
+    };
     onAddTrip(newTrip);
     setSuccess(true);
     setTimeout(() => {
       setSuccess(false);
-      navigate("/");
+      navigate("/trips");
     }, 3000);
 
     setForm({
