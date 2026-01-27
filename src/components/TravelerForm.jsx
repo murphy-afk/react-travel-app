@@ -20,9 +20,15 @@ export default function TravelerForm({ id, travelers, setTravelers }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const fixedName = formData.name.charAt(0).toUpperCase() + formData.name.slice(1);
-    const fixedSurname = formData.surname.charAt(0).toUpperCase() + formData.name.slice(1);
-    const newTraveler = { ...formData, id: Date.now(), name: fixedName, surname: fixedSurname };
+    
+    const fixedName = formData.name.charAt(0).toUpperCase() + (formData.name.slice(1) === formData.name.slice(1).toUpperCase() ? formData.name.slice(1).toLowerCase() : formData.name.slice(1));
+    
+    const fixedSurname = formData.surname.charAt(0).toUpperCase() + (formData.surname.slice(1) === formData.surname.slice(1).toUpperCase() ? formData.surname.slice(1).toLowerCase() : formData.surname.slice(1));
+
+    const fixedMail = formData.email.toLowerCase();
+
+    const newTraveler = { ...formData, id: Date.now(), name: fixedName, surname: fixedSurname, email: fixedMail };
+    
     setTravelers([...travelers, newTraveler]);
     setFormData(initialFormData);
   }
@@ -97,7 +103,7 @@ export default function TravelerForm({ id, travelers, setTravelers }) {
           className="form-control border-0 bg-light py-2 rounded-3 shadow-inner text-uppercase"
           value={formData.identification_code}
           onChange={handleChange}
-          pattern="^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z0-9]{4}$"
+          pattern="^[A-Za-z]{6}[0-9]{2}[A-Za-z][0-9]{2}[A-Za-z0-9]{5}$"
           placeholder="AAAAAA99A99A999A"
           required
         />
