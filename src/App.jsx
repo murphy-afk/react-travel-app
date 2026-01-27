@@ -9,14 +9,14 @@ import { useState } from "react";
 
 function App() {
   const [trips, SetTrips] = useState(internalTrips);
-  const [travelers, settravelers] = useState(internalTravelers);
+  const [travelers, setTravelers] = useState(internalTravelers);
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
           <Route element={<Home trips={trips} />} path="/" />
           <Route
-            element={<Travels trips={trips} travelers={travelers} />}
+            element={<Travels trips={trips} travelers={travelers} setTravelers={setTravelers} />}
             path="/travels/:id"
           />
         </Route>
