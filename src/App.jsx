@@ -4,14 +4,21 @@ import Home from "./pages/Home.jsx";
 import Travels from "./pages/Travels.jsx";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import NotFound from "./pages/Notfound.jsx";
+import { internalTrips, internalTravelers } from "./Data/data.js";
+import { useState } from "react";
 
 function App() {
+  const [trips, SetTrips] = useState(internalTrips);
+  const [travelers, settravelers] = useState(internalTravelers);
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
-          <Route element={<Home />} path="/" />
-          <Route element={<Travels />} path="/travels/:id" />
+          <Route element={<Home trips={trips} />} path="/" />
+          <Route
+            element={<Travels trips={trips} travelers={travelers} />}
+            path="/travels/:id"
+          />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
