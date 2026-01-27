@@ -1,40 +1,40 @@
-import travelers_trips from "../Data/data.js";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import CardTravel from "../components/CardTravel.jsx";
+import { useNavigate } from "react-router-dom";
+import TravellersAccordion from "../components/TravellersAccordion.jsx";
 
-function Travels() {
-    const { travelers, trips } = travelers_trips;
-    const { id } = useParams();
-    const [filteredTravelers, setFilteredTravelers] = useState([]);
-    const [searchbarValue, setSearchbarValue] = useState("");
+function Travels({ trips, travelers }) {
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-    console.log(id);
-    console.log(travelers);
-    console.log(trips);
+  const trip = trips.find((trip) => trip.id === parseInt(id));
 
-    useEffect(() => {
-        const travelFiltered = travelers.filter((traveler) => {
-            return traveler.trip_id === id;
-        });
+  const travelFiltered = travelers.filter(
+    (traveler) => traveler.trip_id === trip.id,
+  );
 
-        const searchbarFiltered = travelFiltered.filter((traveler) => {
-            if (searchbarValue.trim() === "")
-                return true;
-            if (traveler.name.includes(searchbarValue.trim()))
-                return true;
-            return false;;
-        });
-
-        setFilteredTravelers(searchbarFiltered);
-    }, [searchbarValue]);
-
-    return (
-        <p>Travel coming soon!</p>
-
-        {
-            
-        }
-    )
+  return (
+    <>
+      <div className="container pt-4 ">
+        <CardTravel trip={trip} showLink={false} />
+        <h2 className="border rounded py-2 fw-bold text-center my-3">
+          Travelers List:
+        </h2>
+        <TravellersAccordion travelers={travelFiltered} />
+        <div className="text-center">
+          <button
+            className="btn btn-success mt-4 "
+            onClick={() => {
+              navigate(-1);
+            }}
+          >
+            Go back to the Trips area
+          </button>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Travels;
