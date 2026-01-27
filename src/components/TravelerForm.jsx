@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./TravelerForm.css";
 
 export default function TravelerForm({ id, travelers, setTravelers }) {
   const initialFormData = {
@@ -19,7 +20,9 @@ export default function TravelerForm({ id, travelers, setTravelers }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const newTraveler = { ...formData, id: Date.now() };
+    const fixedName = formData.name.charAt(0).toUpperCase() + formData.name.slice(1);
+    const fixedSurname = formData.surname.charAt(0).toUpperCase() + formData.name.slice(1);
+    const newTraveler = { ...formData, id: Date.now(), name: fixedName, surname: fixedSurname };
     setTravelers([...travelers, newTraveler]);
     setFormData(initialFormData);
   }
@@ -28,8 +31,7 @@ export default function TravelerForm({ id, travelers, setTravelers }) {
     <form className="row g-4 p-2" onSubmit={handleSubmit}>
       <div className="col-md-6">
         <label
-          className="form-label small fw-black text-uppercase tracking-wider"
-          style={{ color: "#475569" }}
+          className="form-label small fw-black text-uppercase tracking-wider text-custom"
         >
           <i className="bi bi-person me-2 text-primary"></i>Nome
         </label>
@@ -46,8 +48,7 @@ export default function TravelerForm({ id, travelers, setTravelers }) {
 
       <div className="col-md-6">
         <label
-          className="form-label small fw-black text-uppercase tracking-wider"
-          style={{ color: "#475569" }}
+          className="form-label small fw-black text-uppercase tracking-wider text-custom"
         >
           Cognome
         </label>
@@ -64,8 +65,7 @@ export default function TravelerForm({ id, travelers, setTravelers }) {
 
       <div className="col-12">
         <label
-          className="form-label small fw-black text-uppercase tracking-wider"
-          style={{ color: "#475569" }}
+          className="form-label small fw-black text-uppercase tracking-wider text-custom"
         >
           <i className="bi bi-envelope-at me-2 text-indigo"></i>Email Ufficiale
         </label>
@@ -87,34 +87,34 @@ export default function TravelerForm({ id, travelers, setTravelers }) {
 
       <div className="col-md-7">
         <label
-          className="form-label small fw-black text-uppercase tracking-wider"
-          style={{ color: "#475569" }}
+          className="form-label small fw-black text-uppercase tracking-wider text-custom"
         >
           <i className="bi bi-fingerprint me-2 text-danger"></i>Codice Fiscale
         </label>
         <input
           type="text"
           name="identification_code"
-          className="form-control border-0 bg-light py-2 rounded-3 shadow-inner"
+          className="form-control border-0 bg-light py-2 rounded-3 shadow-inner text-uppercase"
           value={formData.identification_code}
           onChange={handleChange}
+          pattern="^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z0-9]{4}$"
+          placeholder="AAAAAA99A99A999A"
           required
-          style={{ textTransform: "uppercase" }}
         />
       </div>
 
       <div className="col-md-5">
         <label
-          className="form-label small fw-black text-uppercase tracking-wider"
-          style={{ color: "#475569" }}
+          className="form-label small fw-black text-uppercase tracking-wider text-custom"
         >
-          <i className="bi bi-phone me-2 text-success"></i>Recapito
+          <i className="bi bi-phone me-2 text-success"></i>Numero di cellulare
         </label>
         <input
           type="tel"
           name="telephone_number"
           className="form-control border-0 bg-light py-2 rounded-3 shadow-inner"
-          placeholder="333 000 0000"
+          placeholder="+123456789012"
+          pattern="^\+[0-9]{12}$"
           value={formData.telephone_number}
           onChange={handleChange}
           required
@@ -124,11 +124,7 @@ export default function TravelerForm({ id, travelers, setTravelers }) {
       <div className="col-12 mt-5">
         <button
           type="submit"
-          className="btn border-0 w-100 py-3 rounded-pill fw-black text-white shadow-glow transition-all hover-scale"
-          style={{
-            background: "linear-gradient(45deg, #6366f1, #a855f7, #ec4899)",
-            letterSpacing: "2px",
-          }}
+          className="btn border-0 w-100 py-3 rounded-pill fw-black text-white shadow-glow transition-all hover-scale submit-button"
         >
           <i className="bi bi-person-plus-fill me-2 fs-5"></i>
           AGGIUNGI ORA
