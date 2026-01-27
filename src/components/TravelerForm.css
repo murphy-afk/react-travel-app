@@ -1,0 +1,19 @@
+.text-custom {
+  color: #475569;
+}
+
+.text-uppercase
+{
+    text-transform: uppercase;
+}
+
+.submit-button
+{
+    background: linear-gradient(45deg, #6366f1, #a855f7, #ec4899);
+    letter-spacing: 2px;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
