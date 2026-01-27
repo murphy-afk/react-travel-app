@@ -52,7 +52,7 @@ export default function Header() {
                 <Link
                   className="nav-link fw-bold text-light opacity-75 hover-opacity-100 transition-all"
                   style={{ letterSpacing: "1px", fontSize: "0.85rem" }}
-                  to="/"
+                  to="/trips"
                 >
                   ESPLORA
                 </Link>
