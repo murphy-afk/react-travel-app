@@ -21,7 +21,7 @@ export default function AddTrips({ onAddTrip }) {
 
     setTimeout(() => {
       setSuccess(false);
-      navigate("/");
+      navigate("/trips");
     }, 3000);
 
     setForm({
@@ -59,7 +59,7 @@ export default function AddTrips({ onAddTrip }) {
               <i className="bi bi-check-circle-fill fs-4 me-3"></i>
               <div>
                 <strong className="d-block">Viaggio salvato!</strong>
-                <span>Ti stiamo riportando alla Home...</span>
+                <span>Ti stiamo riportando in Esplorazione...</span>
               </div>
             </div>
           )}

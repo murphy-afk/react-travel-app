@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CardTravel from "../components/CardTravel.jsx";
 import TravellersAccordion from "../components/TravellersAccordion.jsx";
 import TravelerForm from "../components/TravelerForm.jsx";
@@ -8,21 +8,28 @@ function Travels({ trips, travelers, setTravelers }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const trip = trips.find((trip) => trip.id === parseInt(id));
-  const travelersFiltered = travelers.filter((t) => t.trip_id === trip.id);
-  const [filteredUsers, setFilteredUsers] = useState(travelersFiltered);
+
+ 
+
   const [searchbarValue, setSearchbarValue] = useState("");
 
-  useEffect(() => {
-    const searchbarFiltered = travelersFiltered.filter((traveler) => {
+  const trip = trips.find((trip) => trip.id === Number(id));
+
+  if (!trip) {
+    return <p>Viaggio non trovato</p>;
+  }
+
+  // utenti filtrati per viaggio + searchbar
+  const filteredUsers = travelers
+    .filter((t) => t.trip_id === trip.id)
+    .filter((traveler) => {
       const nameSurname = `${traveler.name} ${traveler.surname}`.toLowerCase();
       return nameSurname.includes(searchbarValue.toLowerCase());
     });
-    setFilteredUsers(searchbarFiltered);
-  }, [searchbarValue, travelers]);
 
-  if (!trip)
-    return <div className="text-center py-5">Caricamento viaggio...</div>;
+
+  /* if (!trip)
+    return <div className="text-center py-5">Caricamento viaggio...</div>; */
 
   return (
     <div className="bg-light min-vh-100">
@@ -33,7 +40,7 @@ function Travels({ trips, travelers, setTravelers }) {
         >
           <i className="bi bi-arrow-left-circle-fill fs-4 align-middle me-2"></i>
           <span className="align-middle fw-medium">
-            Torna alla lista viaggi
+             🔙 Torna alla lista viaggi
           </span>
         </button>
 

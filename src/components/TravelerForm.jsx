@@ -19,7 +19,13 @@ export default function TravelerForm({ id, travelers, setTravelers }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const newTraveler = { ...formData, id: Date.now() };
+    const newTraveler = { 
+      ...formData, 
+      id: Date.now(),
+      name: formData.name.charAt(0).toUpperCase() + formData.name.slice(1),
+      surname: formData.surname.charAt(0).toUpperCase() + formData.surname.slice(1),
+    
+    };
     setTravelers([...travelers, newTraveler]);
     setFormData(initialFormData);
   }
