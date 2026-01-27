@@ -222,10 +222,11 @@ export default function AddTrips({ onAddTrip }) {
 
           <div className="text-center mt-4">
             <button
-              className="btn btn-link text-muted text-decoration-none small"
+              className="btn btn-light w-50 rounded-pill px-4 py-2 fw-bold text-muted border shadow-sm"
+              style={{ fontSize: "0.9rem" }}
               onClick={() => navigate("/")}
             >
-              Annulla e torna indietro
+              Indietro
             </button>
           </div>
         </div>
