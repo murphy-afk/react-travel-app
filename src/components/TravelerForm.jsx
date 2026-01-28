@@ -10,6 +10,7 @@ export default function TravelerForm({ id, travelers, setTravelers }) {
     telephone_number: "",
     trip_id: parseInt(id),
   };
+  
 
   const [formData, setFormData] = useState(initialFormData);
 

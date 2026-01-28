@@ -22,7 +22,14 @@ function Home() {
           >
             BOOROAD
           </h1>
-          <p className="text-white fw-bold text-uppercase mt-2 tracking-widest opacity-75">
+          <p className=" fw-bold text-uppercase mt-2 tracking-widest opacity-75" style={{
+            background:
+              "linear-gradient(to right, #6366f1, #a855f7, #ec4899)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            fontSize: "clamp(0.8rem, 10vw, 1.2rem )",
+            lineHeight: "1",
+          }}>
             Viaggia con noi
           </p>
           <div className="d-flex justify-content-center align-items-center">
@@ -31,7 +38,7 @@ function Home() {
               style={{ letterSpacing: "1px", fontSize: "0.85rem" }}
               to="/trips"
             >
-              ESPLORA I NOSTRI VIAGGI
+              ESPLORA I TUOI VIAGGI
             </Link>
           </div>
         </div>

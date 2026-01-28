@@ -10,8 +10,6 @@ function Travels({ trips, travelers, setTravelers }) {
   const navigate = useNavigate();
 
 
- 
-
   const [searchbarValue, setSearchbarValue] = useState("");
 
   const trip = trips.find((trip) => trip.id === Number(id));
@@ -55,7 +53,7 @@ function Travels({ trips, travelers, setTravelers }) {
           <div className="col-12 col-xl-8">
             <div className="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
               <div className="card-header bg-white border-0 pt-4 px-4 d-flex justify-content-between align-items-center">
-                <h4 className="fw-bold mb-0">Lista Passeggeri</h4>
+                <h4 className="fw-bold mb-0">Lista Viaggiatori</h4>
                 <span className="badge bg-primary rounded-pill">
                   {filteredUsers.length}
                 </span>
@@ -82,7 +80,7 @@ function Travels({ trips, travelers, setTravelers }) {
             <div className="card border-0 shadow-sm rounded-4">
               <div className="card-body p-4">
                 <h4 className="fw-bold mb-4">
-                  Aggiungi un Turista
+                  Aggiungi un Viaggiatore 
                 </h4>
                 <TravelerForm
                   id={id}

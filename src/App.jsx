@@ -9,6 +9,7 @@ import AddTrips from "./pages/AddTrips.jsx";
 import { useState } from "react";
 import Home from "./pages/Home.jsx";
 
+
 function App() {
   const [trips, setTrips] = useState(internalTrips);
   const [travelers, setTravelers] = useState(internalTravelers);
