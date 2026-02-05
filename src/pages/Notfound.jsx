@@ -13,9 +13,9 @@ function NotFound() {
   }, [navigate]);
   return (
     <div className="container py-5 text-center">
-      <h1>404</h1>
+      <h1>404...</h1>
       <h2>
-        Pagina non trovata, verrai reinderizzato in Home tra 5 secondi,
+        Pagina non trovata, verrai reindirizzato in Home tra 5 secondi,
         attendi....
       </h2>
     </div>

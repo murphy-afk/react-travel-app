@@ -3,13 +3,12 @@ import { useState } from "react";
 import CardTravel from "../components/CardTravel.jsx";
 import TravellersAccordion from "../components/TravellersAccordion.jsx";
 import TravelerForm from "../components/TravelerForm.jsx";
+import "./Travels.css";
 
 function Travels({ trips, travelers, setTravelers }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
-
- 
 
   const [searchbarValue, setSearchbarValue] = useState("");
 
@@ -46,7 +45,7 @@ function Travels({ trips, travelers, setTravelers }) {
 
         <div className="row g-4">
           <div className="col-12 col-xl-4">
-            <div className="sticky-top" style={{ top: "20px" }}>
+            <div className="sticky-card">
               <CardTravel trip={trip} showLink={false} />
             </div>
           </div>
@@ -54,7 +53,7 @@ function Travels({ trips, travelers, setTravelers }) {
           <div className="col-12 col-xl-8">
             <div className="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
               <div className="card-header bg-white border-0 pt-4 px-4 d-flex justify-content-between align-items-center">
-                <h4 className="fw-bold mb-0">Lista Passeggeri</h4>
+                <h4 className="fw-bold mb-0">Lista Viaggiatori</h4>
                 <span className="badge bg-primary rounded-pill">
                   {filteredUsers.length}
                 </span>
@@ -80,9 +79,9 @@ function Travels({ trips, travelers, setTravelers }) {
 
             <div className="card border-0 shadow-sm rounded-4">
               <div className="card-body p-4">
-                <h5 className="fw-bold mb-4 text-primary">
-                  Aggiungi un Turista
-                </h5>
+                <h4 className="fw-bold mb-4">
+                  Aggiungi un Viaggiatore 
+                </h4>
                 <TravelerForm
                   id={id}
                   travelers={travelers}

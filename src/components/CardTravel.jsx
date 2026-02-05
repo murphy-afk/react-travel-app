@@ -22,14 +22,13 @@ function CardTravel({ trip, showLink }) {
       }}
     >
       <div className="card-body p-4">
-        <div className="d-flex justify-content-between align-items-start mb-4">
+        <div className="mb-4">
           <span
             className="badge rounded-pill px-3 py-2 fw-bold text-uppercase shadow-sm"
             style={{ background: gradient, letterSpacing: "1px" }}
           >
             {category}
           </span>
-          <div className="text-muted opacity-50 fw-bold small">#{trip.id}</div>
         </div>
 
         <div className="mb-4">
@@ -43,10 +42,11 @@ function CardTravel({ trip, showLink }) {
           >
             {ending_point}
           </h2>
-          <div className="d-flex align-items-center text-secondary small">
-            <i className="bi bi-calendar3-range me-2 text-primary"></i>
-            <span className="fw-medium">
-              {starting_date} — {ending_date}
+          <div className="d-flex align-items-center text-secondary small py-1">
+            <span className="fw-medium mt-2">
+              Data Partenza: {starting_date}
+              <br />
+              Data Ritorno: {ending_date}
             </span>
           </div>
         </div>
